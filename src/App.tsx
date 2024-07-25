@@ -15,7 +15,7 @@ import Input from "./lib/Input";
 import Button from "./lib/Button";
 import Container from "./lib/Container";
 import { useRef } from "react";
-import Form from "./lib/Form";
+import Form, {type FormHandle} from "./lib/Form";
 
 function App() {
 
@@ -52,6 +52,13 @@ function App() {
   ) */
 
     const inputRef = useRef<HTMLInputElement>(null);
+    const formRef = useRef<FormHandle>(null);
+
+    const handleSave = (data: unknown) => {
+      const extractedData = data as {location: string, age: string};
+      console.log(extractedData);
+      formRef.current?.clear();
+    };
 
     return (
       <>
@@ -67,7 +74,7 @@ function App() {
         </Container>
 
         <main>
-          <Form>
+          <Form onSave={handleSave} ref={formRef}>
             <Input id="location" label="Enter city" type="text" />
             <Input id="age" label="Enter age" type="date" />
             <p>
