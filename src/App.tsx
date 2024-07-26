@@ -11,11 +11,16 @@ export type CourseGoal = {
   id: number;
 }; */
 
-import Input from "./lib/Input";
+import TimersContextProvider from "./store/timers-context"
+import AddTimer from "./timer/AddTimer"
+import Header from "./timer/Header"
+import Timers from "./timer/Timers"
+
+/* import Input from "./lib/Input";
 import Button from "./lib/Button";
 import Container from "./lib/Container";
 import { useRef } from "react";
-import Form, {type FormHandle} from "./lib/Form";
+import Form, {type FormHandle} from "./lib/Form"; */
 
 function App() {
 
@@ -51,7 +56,7 @@ function App() {
     </>
   ) */
 
-    const inputRef = useRef<HTMLInputElement>(null);
+    /* const inputRef = useRef<HTMLInputElement>(null);
     const formRef = useRef<FormHandle>(null);
 
     const handleSave = (data: unknown) => {
@@ -85,7 +90,19 @@ function App() {
           </Form>
         </main>
       </>
-    )
+    ) */
+
+      return (
+        <>
+          <TimersContextProvider>
+            <Header />
+            <main>
+              <AddTimer />
+              <Timers />
+            </main>
+          </TimersContextProvider>
+        </>
+      );
 }
 
 export default App
