@@ -1,4 +1,4 @@
-import { useContext, type FC } from "react";
+import { type FC } from "react";
 import { useTimerContext } from "../store/timers-context";
 import Button from "../lib/Button";
 
